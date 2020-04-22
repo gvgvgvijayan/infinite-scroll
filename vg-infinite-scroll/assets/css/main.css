@@ -1,0 +1,55 @@
+:root {
+    --primary-color-a: #dd801d;
+    --bg-color-a: #fff;
+}
+#vg-infinite-container {
+    border-bottom: 1px solid var(--primary-color-a);
+    border-top: 1px solid var(--primary-color-a);
+    margin: 5px;
+    padding: 5px;
+}
+
+.vg-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+  
+.vg-item {
+    flex: 0 0 32%;
+    height: auto;
+    margin-bottom: 2%; /* (100-32*3)/2 */
+    padding: 5px;
+}
+
+.vg-item:nth-of-type(3n + 2) {
+    border-left: 1px solid var(--primary-color-a);
+    border-right: 1px solid var(--primary-color-a);
+}
+
+#vg-infinite-container .read-more, .vg-infinite.load-more {
+    background: var(--primary-color-a);
+    padding: 10px 25px;
+    border-radius: 25px;
+    color: var(--bg-color-a);
+    margin-top: 25px;
+    display: inline-block;
+    font-size: 12px;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+#vg-infinite-container a{
+    text-decoration: none;
+}
+
+.vg-load-more-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.vg-infinite.load-more {
+    width: 240px;
+    text-align: center;
+}
