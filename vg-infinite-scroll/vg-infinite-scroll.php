@@ -4,7 +4,7 @@ defined('ABSPATH') or die('No direct access please!');
 /*
 Plugin Name: VG Infinite Scroll
 Description: Show the posts with infinite scroll along with load more button
-Version: 1.0
+Version: 2.0
 Author: Vijayan G
 Author URI: www.vijayan.in
 */
@@ -34,7 +34,7 @@ class VG_Infinite_Scroll
         $output = self::posts_ui($attributes);
 
         return '<div id="vg-infinite-container"><div class="vg-main-wrapper vg-container">' . $output . '</div>
-        <div class="vg-load-more-wrapper"><div class="vg-infinite load-more">next</div></div></div>';
+        <div class="vg-load-more-wrapper"><div class="vg-infinite load-more spinner">next</div></div></div>';
     }
 
     private static function posts_ui($att)
@@ -65,6 +65,20 @@ class VG_Infinite_Scroll
 
 
     /**
+     * Fetch total post count
+     * 
+     * @since 2.0
+     */
+    public static function get_post_count() {
+        $att = get_transient('get_custom_posts_att');
+        unset($att['posts_per_page']);
+
+        $vg_posts_count_query = new WP_Query($att);
+
+        return $vg_posts_count_query->found_posts;
+    }
+
+    /**
      * Include plugin JS & CSS
      * 
      * @since 1.0
@@ -74,7 +88,8 @@ class VG_Infinite_Scroll
         wp_enqueue_script('vg-infinite-js', plugin_dir_url(__FILE__) . 'assets/js/main.js');
         wp_enqueue_style('vg-infinite-css', plugin_dir_url(__FILE__) .  'assets/css/main.css');
         wp_localize_script('vg-infinite-js', 'fetch_remaining_post', array(
-            'ajaxurl' => admin_url('admin-ajax.php')
+            'ajaxurl' => admin_url('admin-ajax.php'),
+            'vg_post_count' => self::get_post_count()
         ));
     }
 }

@@ -12,7 +12,7 @@ if ($vg_posts_ui_query->have_posts()) {
                 </a>
             <?php endif; ?>
             <h2 class="vg-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-            <div><?php the_excerpt(); ?></div>
+            <div class="vg-excerpt-content"><?php the_excerpt(); ?></div>
             <a href="<?php the_permalink(); ?>" class="read-more">Read More</a>
         </article>
 <?php
