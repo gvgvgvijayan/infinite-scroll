@@ -4,7 +4,7 @@ defined('ABSPATH') or die('No direct access please!');
 /*
 Plugin Name: VG Infinite Scroll
 Description: Show the posts with infinite scroll along with load more button
-Version: 2.0
+Version: 3.0
 Author: Vijayan G
 Author URI: www.vijayan.in
 */
@@ -34,7 +34,7 @@ class VG_Infinite_Scroll
         $output = self::posts_ui($attributes);
 
         return '<div id="vg-infinite-container"><div class="vg-main-wrapper vg-container">' . $output . '</div>
-        <div class="vg-load-more-wrapper"><div class="vg-infinite load-more spinner">next</div></div></div>';
+        <div class="vg-load-more-wrapper"><div class="vg-infinite load-more spinner">Load More</div></div></div>';
     }
 
     private static function posts_ui($att)
@@ -86,7 +86,7 @@ class VG_Infinite_Scroll
     public static function add_assets()
     {
         wp_enqueue_script('vg-infinite-js', plugin_dir_url(__FILE__) . 'assets/js/main.js');
-        wp_enqueue_style('vg-infinite-css', plugin_dir_url(__FILE__) .  'assets/css/main.css');
+        wp_enqueue_style('vg-infinite-css', plugin_dir_url(__FILE__) .  'assets/css/main.css', '', rand(1, 99999999999));
         wp_localize_script('vg-infinite-js', 'fetch_remaining_post', array(
             'ajaxurl' => admin_url('admin-ajax.php'),
             'vg_post_count' => self::get_post_count()

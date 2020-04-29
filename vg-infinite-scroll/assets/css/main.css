@@ -1,10 +1,8 @@
 :root {
-    --primary-color-a: #dd801d;
+    --primary-color-a: #318001;
     --bg-color-a: #fff;
-}
-
-#vg-infinite-container {
-    max-width: 50em;
+    --button-color-a: #1b91ca;
+    --bg-color-card: #ddf7cd;
 }
 
 .vg-container {
@@ -13,13 +11,43 @@
 }
   
 .vg-item {
-    flex: 0 0 31%;
+    flex: 0 0 30%;
     height: auto;
-    margin-bottom: 2%; /* (100-32*3)/2 */
-    margin-right: 5px;
-    margin-left: 5px;
-    background-color: var(--bg-color-a);
-    padding-bottom: 45px;
+    margin-bottom: 5%; /* (100-30*3)/2 */
+    margin-right: 5%;
+    background-color: var(--bg-color-card);
+    padding-bottom: 72px;
+    padding-left: 19px;
+    padding-right: 19px;
+    position: relative;
+}
+
+@media only screen and (min-width: 768px) {
+    .vg-item:nth-child(3n) {
+        margin-right: 0;
+    }
+}
+
+#vg-infinite-container .vg-thumbnail {
+    width: inherit;
+    margin-bottom: 1.5em;
+    margin-right: -20px;
+    margin-left: -20px;
+}
+
+#vg-infinite-container .vg-thumbnail img{
+    width: 100%;
+    object-fit: cover;
+    margin: 0;
+}
+
+.vg-title {
+    font-size: 19px;
+    line-height: 1.1em;
+}
+
+.vg-excerpt-content p {
+    text-align: justify;
 }
 
 #vg-infinite-container .read-more, .vg-infinite.load-more {
@@ -32,10 +60,20 @@
     font-size: 12px;
     text-transform: uppercase;
     text-decoration: none;
+    position: absolute;
+    bottom: 24px;
+    left: 16px;
+    width: 124px;
 }
 
 #vg-infinite-container a{
     text-decoration: none;
+    color: var(--primary-color-a);
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#vg-infinite-container a:hover {
+    text-decoration: underline;
 }
 
 .vg-load-more-wrapper {
@@ -45,10 +83,10 @@
 }
 
 .vg-infinite.load-more {
-    width: 90px;
     text-align: center;
     position: relative;
     cursor: pointer;
+    background-color: var(--button-color-a);
 }
 
 #vg-infinite-container .vg-hide {
@@ -63,6 +101,10 @@
     .vg-container {
         flex-direction: column;
     }
+
+    .vg-item {
+        flex: 100%;
+    }
 }
 
 /* Animation */
@@ -75,7 +117,7 @@
     box-sizing: border-box;
     position: absolute;
     top: 57%;
-    left: 81%;
+    left: 90%;
     width: 15px;
     height: 15px;
     margin-top: -10px;
