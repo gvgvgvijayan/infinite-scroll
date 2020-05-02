@@ -39,7 +39,7 @@ document.addEventListener('fetchEnd', function () {
         if (get_loaded_post_count() == parseInt(fetch_remaining_post.vg_post_count)) {
             document.querySelector('.vg-infinite.load-more').classList.add('vg-hide');
         }
-    }, 0); //To avoid race condition with post ajax dom render
+    }, 1); //To avoid race condition with post ajax dom render
 });
 
 window.onload = function () {
