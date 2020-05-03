@@ -86,7 +86,7 @@ class VG_Infinite_Scroll
     public static function add_assets()
     {
         wp_enqueue_script('vg-infinite-js', plugin_dir_url(__FILE__) . 'assets/js/main.js');
-        wp_enqueue_style('vg-infinite-css', plugin_dir_url(__FILE__) .  'assets/css/main.css', '', rand(1, 99999999999));
+        wp_enqueue_style('vg-infinite-css', plugin_dir_url(__FILE__) .  'assets/css/main.css');
         wp_localize_script('vg-infinite-js', 'fetch_remaining_post', array(
             'ajaxurl' => admin_url('admin-ajax.php'),
             'vg_post_count' => self::get_post_count()
